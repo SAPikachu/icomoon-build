@@ -1,4 +1,75 @@
 icomoon-build
 =============
 
-Build IcoMoon project in Node
+Build IcoMoon project in Node.
+
+Why this?
+---------
+
+We use IcoMoon with customized SCSS stylesheets in our project, it's annoying to copy new icon declarations from IcoMoon-generated stylesheet to our SCSS stylesheet every time I need to add new icons. So I created this package to make the process a little easier.
+
+Installation
+------------
+
+Simply install using [npm](http://npmjs.org):
+
+    npm install icomoon-build
+
+Usage
+-----
+
+First, create a project on [IcoMoon](http://icomoon.io/app/), and save the project file locally (Menu -> Manage Projects -> Download).
+
+Then run the script like this:
+
+    node_modules/.bin/icomoon-build -p path/to/your/project.json --scss path/to/output.scss --fonts path/to/fonts/
+    
+    # Or if icomoon-build is installed globally:
+    icomoon-build -p path/to/your/project.json --scss path/to/output.scss --fonts path/to/fonts/
+    
+Note
+----
+
+SCSS output is supposed to be imported to another SCSS file, it only contains individual icon definitions. Here is an example of generated SCSS file:
+
+    // Script-generated file, do not modify by hand
+    
+    $icon-export-content: "\e600";
+    
+    @mixin icon-classes {
+        .icon-export:before { content: $icon-export-content; }
+    }
+
+You can use the file like this:
+
+    @font-face {
+        font-family: "icons";
+        src: url("../fonts/icons.eot");
+        src: url("../fonts/icons.eot?#iefix") format("embedded-opentype"),
+        	 url("../fonts/icons.woff") format("woff"),
+        	 url("../fonts/icons.ttf") format("truetype"),
+        	 url("../fonts/icons.svg#icons") format("svg");
+        font-weight: normal;
+        font-style: normal;
+    }
+    
+    .icon:before {
+        display: inline-block;
+        position: relative;
+        font-family: "icons";
+        font-style: normal;
+        font-weight: normal;
+        speak: none;
+        text-decoration: inherit;
+        line-height: 99%;
+        text-align: center;
+        vertical-align: baseline;
+        
+        // better font rendering
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+    
+    @import "path/to/generated.scss";
+    
+    @include icon-classes;
