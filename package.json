@@ -2,18 +2,23 @@
   "name": "icomoon-build",
   "version": "0.0.1",
   "description": "Build IcoMoon project in Node",
-  "main": "icomoon.js",
+  "main": "./lib/icomoon",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "grunt"
+  },
+  "bin": {
+    "icomoon-build": "./bin/icomoon-build"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/SAPikachu/icomoon-build.git"
   },
   "keywords": [
-    "icomoon"
+    "icomoon",
+    "icon",
+    "cli"
   ],
-  "author": "Joe Hu",
+  "author": "Joe Hu <i@sapika.ch>",
   "license": "MIT",
   "dependencies": {
     "adm-zip": "~0.4.3",
