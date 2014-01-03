@@ -6,6 +6,10 @@ var page = require("webpage").create();
 var system = require("system");
 var fs = require("fs");
 
+console.log = function() {
+    // PhantomXHR uses this, redirect to stderr to prevent it from messing up zip output
+    return system.stderr.writeLine.apply(system.stderr, arguments);
+};
 page.onError = function(msg, trace) {
     var msgStack = ["ERROR: " + msg];
     if (trace) {
@@ -28,8 +32,28 @@ page.onConsoleMessage = function(msg, lineNum, sourceId) {
 page.onLoadStarted = function() {
     system.stderr.writeLine("onLoadStarted: " + page.url);
     system.stderr.writeLine(" -- ");
-};
 
+};
+page.onInitialized = function() {
+    system.stderr.writeLine("onInitialized: " + page.url);
+    system.stderr.writeLine(" -- ");
+
+    // Fake all unnecessary requests
+    var xhr = require('./vendor/phantomxhr.js');
+    xhr.init(page, './vendor');
+    xhr.fake({
+        url: /.*\.(tmpl|html?)/,
+        responseBody: JSON.stringify("")
+    });
+    xhr.fake({
+        url: /.*authstat.*/,
+        responseBody: JSON.stringify({"uid":false,"auth":false,"mail":false,"optout":null,"secret":null})
+    });
+    xhr.fake({
+        url: /.*getsessiontime/,
+        responseBody: JSON.stringify({"error":"Unauthed user trying to access."})
+    });
+};
 page.onLoadFinished = function(status) {
     system.stderr.writeLine("onLoadFinished: " + page.url);
     system.stderr.writeLine("Status: " + status);
@@ -42,6 +66,7 @@ page.onNavigationRequested = function(url, type, willNavigate, main) {
     system.stderr.writeLine("main: " + main);
     system.stderr.writeLine(" -- ");
 };
+
 var project;
 try {
     project = JSON.parse(fs.read(system.args[1]));
@@ -50,6 +75,7 @@ try {
     system.stderr.writeLine(e.toString());
     phantom.exit(1);
 }
+
 page.open("http://icomoon.io/app/", function() {
     page.evaluate(function(project) {
         // jshint browser: true, -W034

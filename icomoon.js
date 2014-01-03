@@ -30,7 +30,10 @@ function buildScssSheet(selection) {
 
 function buildProject(projectFilePath, cb) {
     var childArgs = [
-        path.join(__dirname, "icomoon.phantom.js"), projectFilePath
+        "--disk-cache=true",
+        "--load-images=false",
+        path.join(__dirname, "icomoon.phantom.js"),
+        projectFilePath
     ];
     childProcess.execFile(binPath, childArgs, function(err, stdout, stderr) {
         if (err) {
