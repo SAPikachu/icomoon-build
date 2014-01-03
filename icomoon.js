@@ -54,7 +54,7 @@ function buildProject(projectFilePath, cb) {
                         data: zip.readFile(zipEntry),
                     };
                 } else if (/^[^\/]+\.css$/.test(zipEntry.entryName)) {
-                    result.stylesheet = zip.readAsText(zipEntry);
+                    result.css = zip.readAsText(zipEntry);
                 } else if ("selection.json" === zipEntry.entryName) {
                     result.selection = JSON.parse(zip.readAsText(zipEntry));
                 }
