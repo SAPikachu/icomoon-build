@@ -1,9 +1,11 @@
+"use strict";
+
 var fs = require("fs");
-var console = require("console")
-var util = require("util")
+var console = require("console");
+var util = require("util");
 var path = require("path");
 var childProcess = require("child_process");
-var AdmZip = require('adm-zip');
+var AdmZip = require("adm-zip");
 var phantomjs = require("phantomjs");
 var binPath = phantomjs.path;
 
@@ -13,7 +15,7 @@ function buildScssSheet(selection) {
     var mainMixin = "";
     selection.icons.forEach(function(iconEntry) {
         var props = iconEntry.properties;
-        contentDeclarations += util.format('$%s%s-content: "\\%s";\n', prefix, props.name, props.code.toString(16));
+        contentDeclarations += util.format("$%s%s-content: \"\\%s\";\n", prefix, props.name, props.code.toString(16));
         mainMixin += util.format(".%s%s:before { content: $%s%s-content; }\n", prefix, props.name, prefix, props.name);
     });
     var output = "";
@@ -35,12 +37,14 @@ function buildProject(projectFilePath, cb) {
             cb(err);
             return;
         }
+        var result;
         try {
-            var buf = new Buffer(stdout, "base64");
-            var zip = new AdmZip(buf);
+            var zipBuf = new Buffer(stdout, "base64");
+            var zip = new AdmZip(zipBuf);
             var zipEntries = zip.getEntries(); // an array of ZipEntry records
 
-            var result = {
+            result = {
+                zip: zipBuf,
                 fonts: {}
             };
             zipEntries.forEach(function(zipEntry) {

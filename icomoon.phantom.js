@@ -1,16 +1,20 @@
+// jshint phantom: true
+
+"use strict";
+
 var page = require("webpage").create();
 var system = require("system");
 var fs = require("fs");
 
 page.onError = function(msg, trace) {
-    var msgStack = ['ERROR: ' + msg];
+    var msgStack = ["ERROR: " + msg];
     if (trace) {
-        msgStack.push('TRACE:');
+        msgStack.push("TRACE:");
         trace.forEach(function(t) {
-            msgStack.push(' -> ' + t.file + ': ' + t.line + (t["function"] ? ' (in function "' + t["function"] + '")' : ''));
+            msgStack.push(" -> " + t.file + ": " + t.line + (t["function"] ? " (in function \"" + t["function"] + "\")" : ""));
         });
     }
-    system.stderr.writeLine(msgStack.join('\n'));
+    system.stderr.writeLine(msgStack.join("\n"));
     phantom.exit(2);
 };
 page.onConsoleMessage = function(msg, lineNum, sourceId) {
@@ -19,7 +23,7 @@ page.onConsoleMessage = function(msg, lineNum, sourceId) {
         phantom.exit(0);
         return;
     }
-    system.stderr.writeLine('CONSOLE: ' + msg + ' (from line #' + lineNum + ' in "' + sourceId + '")');
+    system.stderr.writeLine("CONSOLE: " + msg + " (from line #" + lineNum + " in \"" + sourceId + "\")");
 };
 page.onLoadStarted = function() {
     system.stderr.writeLine("onLoadStarted: " + page.url);
@@ -48,6 +52,10 @@ try {
 }
 page.open("http://icomoon.io/app/", function() {
     page.evaluate(function(project) {
+        // jshint browser: true, -W034
+        /* global angular */
+        "use strict";
+
         var injector = angular.element(document.body).injector();
         var session = injector.get("session");
         var $controller = injector.get("$controller");
