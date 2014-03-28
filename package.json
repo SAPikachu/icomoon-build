@@ -1,6 +1,6 @@
 {
   "name": "icomoon-build",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "description": "Build IcoMoon project in Node",
   "main": "./lib/icomoon",
   "scripts": {
@@ -16,7 +16,9 @@
   "keywords": [
     "icomoon",
     "icon",
-    "cli"
+    "cli",
+    "scss",
+    "less"
   ],
   "author": "Joe Hu <i@sapika.ch>",
   "license": "MIT",

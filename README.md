@@ -26,11 +26,13 @@ Then run the script like this:
     
     # Or if icomoon-build is installed globally:
     icomoon-build -p path/to/your/project.json --scss path/to/output.scss --fonts path/to/fonts/
+
+As of version 0.1.0, LESS stylesheet can also be generated. Simply change `--scss` to `--less` to specify LESS output.
     
 Note
 ----
 
-SCSS output is supposed to be imported to another SCSS file, it only contains individual icon definitions. Here is an example of generated SCSS file:
+SCSS/LESS output is supposed to be imported to another SCSS/LESS file, it only contains individual icon definitions. Here is an example of generated SCSS file:
 
     // Script-generated file, do not modify by hand
     
@@ -73,3 +75,22 @@ You can use the file like this:
     @import "path/to/generated.scss";
     
     @include icon-classes;
+
+Change log
+----------
+
+### 0.1.0
+
+* Support LESS output
+
+### 0.0.3
+
+* Disable disk cache as it breaks after server code is updated
+
+### 0.0.2
+
+* Fix freezing in some cases
+
+### 0.0.1
+
+* Initial release
