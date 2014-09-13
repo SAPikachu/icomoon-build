@@ -79,6 +79,10 @@ You can use the file like this:
 Change log
 ----------
 
+### 0.1.1
+
+* Relax stdout buffer limit. Fix #3. (reported by @yairEO, thanks!)
+
 ### 0.1.0
 
 * Support LESS output
