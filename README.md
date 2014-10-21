@@ -79,6 +79,10 @@ You can use the file like this:
 Change log
 ----------
 
+### 0.1.2
+
+* IcoMoon no longer supports SSLv3, specify --ssl-protocol=any to let PhantomJS choose newer version. Fix #4
+
 ### 0.1.1
 
 * Relax stdout buffer limit. Fix #3. (reported by @yairEO, thanks!)
