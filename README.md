@@ -79,6 +79,11 @@ You can use the file like this:
 Change log
 ----------
 
+### 0.2.0
+
+* Support item map output for SCSS (--scss-with-map option). Implement #5
+* Add callback argument to lib/cli.js. (Idea stolen from @nanymor)
+
 ### 0.1.2
 
 * IcoMoon no longer supports SSLv3, specify --ssl-protocol=any to let PhantomJS choose newer version. Fix #4
