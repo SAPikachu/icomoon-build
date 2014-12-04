@@ -79,6 +79,10 @@ You can use the file like this:
 Change log
 ----------
 
+### 0.2.1
+
+* Works again for latest IcoMoon website. Fix #6
+
 ### 0.2.0
 
 * Support item map output for SCSS (--scss-with-map option). Implement #5
