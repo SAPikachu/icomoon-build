@@ -79,6 +79,10 @@ You can use the file like this:
 Change log
 ----------
 
+### 0.2.2
+
+* Fix script error on page.
+
 ### 0.2.1
 
 * Works again for latest IcoMoon website. Fix #6
