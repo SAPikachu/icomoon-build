@@ -79,6 +79,11 @@ You can use the file like this:
 Change log
 ----------
 
+### 0.2.3
+
+* Forgot to prepend library path when reading presets.json
+* Fix `QUOTA_EXCEEDED_ERR`
+
 ### 0.2.2
 
 * Fix script error on page.
