@@ -79,6 +79,10 @@ You can use the file like this:
 Change log
 ----------
 
+### 0.2.4
+
+* Fix for latest IcoMoon app
+
 ### 0.2.3
 
 * Forgot to prepend library path when reading presets.json
