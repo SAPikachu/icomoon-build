@@ -79,6 +79,10 @@ You can use the file like this:
 Change log
 ----------
 
+### 0.2.5
+
+* Upgrade phantomjs to fix https://nodesecurity.io/advisories/130
+
 ### 0.2.4
 
 * Fix for latest IcoMoon app
