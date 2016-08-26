@@ -79,6 +79,10 @@ You can use the file like this:
 Change log
 ----------
 
+### 0.2.6
+
+* 0.2.5 was actually broken by updated phantomjs, Fixed.
+
 ### 0.2.5
 
 * Upgrade phantomjs to fix https://nodesecurity.io/advisories/130

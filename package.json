@@ -1,6 +1,6 @@
 {
   "name": "icomoon-build",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "description": "Build IcoMoon project in Node",
   "main": "./lib/icomoon",
   "scripts": {
