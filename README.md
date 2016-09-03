@@ -79,6 +79,10 @@ You can use the file like this:
 Change log
 ----------
 
+### 0.2.7
+
+* Support multiple class names. Thanks @Shoplifter for reporting this.
+
 ### 0.2.6
 
 * 0.2.5 was actually broken by updated phantomjs, Fixed.
