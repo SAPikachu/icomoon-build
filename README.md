@@ -79,6 +79,10 @@ You can use the file like this:
 Change log
 ----------
 
+### 0.2.8
+
+* Missing one place in last change, oops.
+
 ### 0.2.7
 
 * Support multiple class names. Thanks @Shoplifter for reporting this.
